@@ -1,0 +1,40 @@
+
+<div class="card"
+[ngClass]="{'Haze': main === 'Haze'}"
+[ngClass]="{'Drizzle': main === 'Drizzle'}"
+[ngClass]="{'Clear': main === 'Clear'}"
+[ngClass]="{'Clouds': main === 'Clouds'}"
+[ngClass]="{'Rain': main === 'Rain'}"
+[ngClass]="{'Thunderstorm': main === 'Thunderstorm'}"
+
+>
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-8">{{ city}}</div>
+            
+        <div class="col-md-1" *ngIf="hasCity">
+            <button class="btn btn-light"  (click)="onChange()"> change </button>
+        </div>
+        </div>
+        
+      </div>
+      <br>
+      <div *ngIf="!hasCity" class="text-center">
+        <input type="text" class="form-control mb-3" placeholder="Enter City" [(ngModel)]="loc">
+        <br>
+        <button class="btn btn-primary" (click)="getWeather()"> Add </button>
+      </div>
+
+      <div *ngIf="hasCity" class="text-center">
+          
+          <label>{{d.weather[0].main}}</label>
+          <br>
+          <label> Current Temperature:{{ d.main.temp }} </label>
+          <label> Feels Like:{{d.main.feels_like}} </label>
+          <label> Max Temperature:{{ d.main.temp_max }} </label>
+          <label> Min Temperature:{{ d.main.temp_min }} </label>
+
+
+      </div>
+    
+</div>
